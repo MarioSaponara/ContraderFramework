@@ -14,7 +14,6 @@ public class LoginView implements View {
 
     }
 
-
     public void showOptions () {
         System.out.println("-----LOGIN----");
         System.out.println("Nome utente:");
@@ -27,6 +26,7 @@ public class LoginView implements View {
         Request request = new Request();
         request.put("nomeUtente", nomeUtente);
         request.put("password", password);
+        request.put("role", null);
         MainDispatcher.getInstance().callAction("Home", "doControl", request);
     }
 

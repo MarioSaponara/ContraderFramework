@@ -12,7 +12,7 @@ public class HomeController implements Controller {
     }
 
     public void doControl(Request request) {
-        if (request != null) {
+        if ((request != null) && (request.get("role")==null)) {
             String nomeUtente = request.get("nomeUtente").toString();
             String password = request.get("password").toString();
             String role=loginService.login(nomeUtente, password);
@@ -24,7 +24,7 @@ public class HomeController implements Controller {
             else
                 MainDispatcher.getInstance().callAction("Login", "doControl", request);
         }
-        else MainDispatcher.getInstance().callView("Home", null);
+        else MainDispatcher.getInstance().callView("Home", request);
 
     }
 }

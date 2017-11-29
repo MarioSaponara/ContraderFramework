@@ -13,8 +13,6 @@ public class GommaView implements View {
     private GommaService gommaService;
     private String mode;
     private String role;
-    private String nomeUtente;
-    private String password;
 
   public GommaView () {
       this.gommaService = new GommaService();
@@ -25,8 +23,6 @@ public class GommaView implements View {
     public void showResults(Request request) {
        this.mode  = (String) request.get("mode");
             role = (String) request.get("role");
-            nomeUtente = (String) request.get("nomeUtente");
-            password = (String) request.get("password");
 
     }
 
@@ -70,6 +66,10 @@ public class GommaView implements View {
                 List<String> brands=gommaService.getAllManufacturerForType(type);
                 System.out.println("-----Brand disponibili--------");
                 brands.forEach(String -> System.out.println(String));
+                System.out.println("-----Scegli il brand--------");
+                String brand=getInput();
+                List<Gomma> gommeBrand=gommaService.getAllGommeForManufacturer(brand, type);
+                gommeBrand.forEach(gomma -> System.out.println(gomma));
 
         }
     }
@@ -83,8 +83,6 @@ public class GommaView implements View {
     @Override
     public void submit() {
         Request request = new Request();
-        request.put("nomeUtente",nomeUtente);
-        request.put("password",password);
         request.put("role", role);
         MainDispatcher.getInstance().callAction("Home", "doControl", request);
     }
