@@ -15,8 +15,12 @@ public class HomeController implements Controller {
         if (request != null) {
             String nomeUtente = request.get("nomeUtente").toString();
             String password = request.get("password").toString();
-            if (loginService.login(nomeUtente, password))
+            String role=loginService.login(nomeUtente, password);
+
+            if (role!=null) {
+                request.put("role", role);
                 MainDispatcher.getInstance().callView("Home", request);
+            }
             else
                 MainDispatcher.getInstance().callAction("Login", "doControl", request);
         }

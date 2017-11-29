@@ -12,6 +12,9 @@ public class GommaView implements View {
 
     private GommaService gommaService;
     private String mode;
+    private String role;
+    private String nomeUtente;
+    private String password;
 
   public GommaView () {
       this.gommaService = new GommaService();
@@ -21,6 +24,10 @@ public class GommaView implements View {
     @Override
     public void showResults(Request request) {
        this.mode  = (String) request.get("mode");
+            role = (String) request.get("role");
+            nomeUtente = (String) request.get("nomeUtente");
+            password = (String) request.get("password");
+
     }
 
     @Override
@@ -41,7 +48,29 @@ public class GommaView implements View {
                 String manufacturer = getInput();
                 System.out.println("Prezzo:");
                 double price = Double.parseDouble(getInput());
-                gommaService.insertGomma(new Gomma(model, manufacturer, price));
+                System.out.println("Larghezza:");
+                double width = Double.parseDouble(getInput());
+                System.out.println("Altezza:");
+                double height = Double.parseDouble(getInput());
+                System.out.println("Diametro:");
+                double diameter = Double.parseDouble(getInput());
+                System.out.println("Carico:");
+                double weight = Double.parseDouble(getInput());
+                System.out.println("Velocità:");
+                String speed = getInput();
+                System.out.println("Stagione:");
+                String season = getInput();
+                System.out.println("Tipo veicolo:");
+                String typevehicle = getInput();
+                gommaService.insertGomma(new Gomma (null, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle));
+                break;
+            case "allBrandTypeVehicle":
+                System.out.println("Inserisci il tuo tipo di veicolo(moto-commerciale-auto):");
+                String type = getInput();
+                List<String> brands=gommaService.getAllManufacturerForType(type);
+                System.out.println("-----Brand disponibili--------");
+                brands.forEach(String -> System.out.println(String));
+
         }
     }
 
@@ -53,7 +82,11 @@ public class GommaView implements View {
 
     @Override
     public void submit() {
-        MainDispatcher.getInstance().callAction("Home", "doControl", null);
+        Request request = new Request();
+        request.put("nomeUtente",nomeUtente);
+        request.put("password",password);
+        request.put("role", role);
+        MainDispatcher.getInstance().callAction("Home", "doControl", request);
     }
 
 
