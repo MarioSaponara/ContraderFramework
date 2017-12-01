@@ -74,6 +74,17 @@ public class GommaView implements View {
                 String brand=getInput();
                 List<Gomma> gommeBrand=gommaService.getAllGommeForManufacturer(brand, type);
                 gommeBrand.forEach(gomma -> System.out.println(gomma));
+             /*   break;
+            case "":
+                /*System.out.println("Inserisci il tuo tipo di veicolo(moto-commerciale-auto):");
+                String type = getInput();
+                List<String> brands=gommaService.getAllManufacturerForType(type);
+                System.out.println("-----Brand disponibili--------");
+                brands.forEach(String -> System.out.println(String));
+                System.out.println("-----Scegli il brand--------");
+                String brand=getInput();
+                List<Gomma> gommeBrand=gommaService.getAllGommeForManufacturer(brand, type);
+                gommeBrand.forEach(gomma -> System.out.println(gomma));*/
 
         }
     }

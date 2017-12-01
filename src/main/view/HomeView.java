@@ -31,8 +31,8 @@ public class HomeView implements View {
                 System.out.println("");
                 System.out.println("1) Inserisci nuova gomma");
                 System.out.println("2) Visualizza tutte le gomme");
-
-                System.out.println("3) Logout");
+                System.out.println("3) Visualizza tutti gli utenti");
+                System.out.println("4) Logout");
                 this.choice = Integer.parseInt(getInput());
                 break;
             case "user":
@@ -41,7 +41,8 @@ public class HomeView implements View {
                 System.out.println("");
                 System.out.println("1) Visualizza tutte le gomme");
                 System.out.println("2) Visualizza gomma per brand");
-                System.out.println("3) Logout");
+                System.out.println("3) Visualizza gomma per dimensione");
+                System.out.println("4) Logout");
                 this.choice = Integer.parseInt(getInput());
         }
 
@@ -51,15 +52,22 @@ public class HomeView implements View {
         switch(role)
         {
             case "admin":
-                if (choice < 1 || choice > 3) {
+                if (choice < 1 || choice > 4) {
                     Request request = new Request();
                     request.put("role", role);
                     request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Home", "doControl", request);
                 }
-                else if (choice == 3)
+                else if (choice == 3){
+                    Request request = new Request();
+                    request.put("choice", choice);
+                    request.put("role", role);
+                    request.put("nome", nome);
+                    MainDispatcher.getInstance().callAction("User", "doControl", request);
+                }
+                else if (choice == 4)
                     MainDispatcher.getInstance().callAction("Login", "doControl", null);
-                else {
+                else{
                     Request request = new Request();
                     request.put("choice", choice);
                     request.put("role", role);
@@ -68,13 +76,13 @@ public class HomeView implements View {
                 }
                 break;
             case "user":
-                if (choice < 1 || choice > 3) {
+                if (choice < 1 || choice > 4) {
                     Request request = new Request();
                     request.put("role", role);
                     request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Home", "doControl", request);
                 }
-                else if (choice == 3)
+                else if (choice == 4)
                     MainDispatcher.getInstance().callAction("Login", "doControl", null);
                 else {
                     Request request = new Request();

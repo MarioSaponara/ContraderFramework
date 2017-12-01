@@ -50,7 +50,7 @@ public class UserDAO {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(QUERY_ALL);
             while (resultSet.next()) {
-                Integer idUser=resultSet.getInt("idUser");
+                Integer idUser=resultSet.getInt("idUsers");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 String firstname = resultSet.getString("firstname");

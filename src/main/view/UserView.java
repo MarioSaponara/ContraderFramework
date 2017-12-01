@@ -13,17 +13,30 @@ public class UserView implements View {
 
     private UserService userService;
     private String mode;
+    private String role;
+    private String nome;
+
 
     public UserView(){
         this.userService = new UserService();
     }
     @Override
     public void showResults(Request request) {
-
+        this.mode  = (String) request.get("mode");
+        role = (String) request.get("role");
+        nome = (String) request.get("nome");
     }
 
     @Override
     public void showOptions() {
+        switch (mode) {
+            case "all":
+                List<User> users = userService.getAllUsers();
+                System.out.println("----- Utenti registrati -----");
+                System.out.println();
+                users.forEach(user -> System.out.println(user));
+                break;
+            case "insert":
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Registrati:");
                 System.out.println("Username:");
@@ -52,7 +65,8 @@ public class UserView implements View {
                 String address = getInput();
                 System.out.println("Telefono:");
                 String telephone = getInput();
-                userService.insertUser(new User (null, username, password, firstname, lastname, dateofBirth, cf, businessname, vat, municipality, postecode, city, address, telephone, "user"));
+                userService.insertUser(new User(null, username, password, firstname, lastname, dateofBirth, cf, businessname, vat, municipality, postecode, city, address, telephone, "user"));
+        }
     }
 
     @Override
@@ -64,7 +78,14 @@ public class UserView implements View {
     @Override
     public void submit() {
         //MainDispatcher.getInstance().callAction("Home", "doControl", request);
-        MainDispatcher.getInstance().callView("Login", null);
+        if (mode.equals("insert")) {
+            MainDispatcher.getInstance().callView("Login", null);
+        }else if (mode.equals("all")) {
+            Request request = new Request();
+            request.put("role", role);
+            request.put("nome", nome);
+            MainDispatcher.getInstance().callAction("Home", "doControl", request);
+        }
 
     }
 }

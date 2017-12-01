@@ -21,12 +21,15 @@ public class GommaController implements Controller {
                 }
                 break;
             case "user":
-                    switch (choice) {
-                        case 1:
+                switch (choice) {
+                    case 1:
                         request.put("mode", "all");
                         break;
                     case 2:
                         request.put("mode", "allBrandTypeVehicle");
+                        break;
+                    case 3:
+                        request.put("mode", "allGomma");
                         break;
             }
         }
