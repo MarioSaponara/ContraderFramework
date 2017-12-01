@@ -13,8 +13,9 @@ public class Gomma {
     private String speed;
     private String season;
     private String typevehicle;
+    private Integer quantity;
 
-    public Gomma(Integer idGomme, String model, String manufacturer, double price, double width, double height, double diameter, double weight, String speed, String season, String typevehicle) {
+    public Gomma(Integer idGomme, String model, String manufacturer, double price, double width, double height, double diameter, double weight, String speed, String season, String typevehicle, Integer quantity) {
         this.idGomme = idGomme;
         this.model = model;
         this.manufacturer = manufacturer;
@@ -26,6 +27,7 @@ public class Gomma {
         this.speed = speed;
         this.season = season;
         this.typevehicle = typevehicle;
+        this.quantity = quantity;
     }
 
     public Integer getIdGomme() {
@@ -112,6 +114,14 @@ public class Gomma {
         this.typevehicle = typevehicle;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -166,6 +176,7 @@ public class Gomma {
                 "\n Speed='" + speed + '\'' +
                 "\n Season='" + season + '\'' +
                 "\n Typevehicle='" + typevehicle + '\'' +
+                "\n Quantity='" + quantity + '\'' +
                 "\n";
     }
 }

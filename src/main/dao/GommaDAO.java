@@ -38,7 +38,8 @@ public class GommaDAO {
                 String speed = resultSet.getString("speed");
                 String season = resultSet.getString("season");
                 String typevehicle = resultSet.getString("typevehicle");
-                gomme.add(new Gomma(idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle));
+                Integer quantity = resultSet.getInt("quantity");
+                gomme.add(new Gomma(idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle, quantity));
             }
         }
         catch (SQLException e) {
@@ -84,7 +85,8 @@ public class GommaDAO {
                String speed = resultSet.getString("speed");
                String season = resultSet.getString("season");
                String typevehicle = resultSet.getString("typevehicle");
-               gomme.add(new Gomma(idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle));
+               Integer quantity = resultSet.getInt("quantity");
+               gomme.add(new Gomma(idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle, quantity));
            }
         }
         catch (SQLException e) {
@@ -107,6 +109,7 @@ public class GommaDAO {
             preparedStatement.setString(8, gomma.getSpeed());
             preparedStatement.setString(9, gomma.getSeason());
             preparedStatement.setString(10, gomma.getTypevehicle());
+            preparedStatement.setInt(11, gomma.getQuantity());
             return preparedStatement.execute();
         }
         catch (SQLException e) {

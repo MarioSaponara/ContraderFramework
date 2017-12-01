@@ -2,7 +2,7 @@ package main.model;
 
 public class User {
 
-    private int idUsers;
+    private Integer idUsers;
     private String username;
     private String password;
     private String firstname;
@@ -18,7 +18,7 @@ public class User {
     private String telephone;
     private String role;
 
-    public User(int idUsers, String username, String password, String firstname, String lastname, String dateofBirth, String cf, String businessname, String vat, String municipality, String postecode, String city, String address, String telephone, String role) {
+    public User(Integer idUsers, String username, String password, String firstname, String lastname, String dateofBirth, String cf, String businessname, String vat, String municipality, String postecode, String city, String address, String telephone, String role) {
         this.idUsers = idUsers;
         this.username = username;
         this.password = password;
@@ -76,6 +76,122 @@ public class User {
         result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    public Integer getIdUsers() {
+        return idUsers;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getDateofBirth() {
+        return dateofBirth;
+    }
+
+    public void setDateofBirth(String dateofBirth) {
+        this.dateofBirth = dateofBirth;
+    }
+
+    public String getCf() {
+        return cf;
+    }
+
+    public void setCf(String cf) {
+        this.cf = cf;
+    }
+
+    public String getBusinessname() {
+        return businessname;
+    }
+
+    public void setBusinessname(String businessname) {
+        this.businessname = businessname;
+    }
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
+    }
+
+    public String getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
+    }
+
+    public String getPostecode() {
+        return postecode;
+    }
+
+    public void setPostecode(String postecode) {
+        this.postecode = postecode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

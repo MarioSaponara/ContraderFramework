@@ -10,11 +10,13 @@ public class HomeView implements View {
 
     private int choice;
     private String role;
+    private String nome;
 
 
     public void showResults(Request request) {
         if (request!=null) {
             role = (String) request.get("role");
+            nome = (String) request.get("nome");
         }
     }
 
@@ -34,7 +36,7 @@ public class HomeView implements View {
                 break;
             case "user":
                 System.out.println("");
-                System.out.println("-------MENU USER-------");
+                System.out.println("-------MENU "+nome+"-------");
                 System.out.println("");
                 System.out.println("1) Visualizza tutte le gomme");
                 System.out.println("2) Visualizza gomma per brand");
@@ -51,6 +53,7 @@ public class HomeView implements View {
                 if (choice < 1 || choice > 3) {
                     Request request = new Request();
                     request.put("role", role);
+                    request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Home", "doControl", request);
                 }
                 else if (choice == 3)
@@ -59,6 +62,7 @@ public class HomeView implements View {
                     Request request = new Request();
                     request.put("choice", choice);
                     request.put("role", role);
+                    request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Gomma", "doControl", request);
                 }
                 break;
@@ -66,6 +70,7 @@ public class HomeView implements View {
                 if (choice < 1 || choice > 3) {
                     Request request = new Request();
                     request.put("role", role);
+                    request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Home", "doControl", request);
                 }
                 else if (choice == 3)
@@ -74,6 +79,7 @@ public class HomeView implements View {
                     Request request = new Request();
                     request.put("choice", choice);
                     request.put("role", role);
+                    request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Gomma", "doControl", request);
                 }
         }

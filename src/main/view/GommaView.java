@@ -13,6 +13,7 @@ public class GommaView implements View {
     private GommaService gommaService;
     private String mode;
     private String role;
+    private String nome;
 
   public GommaView () {
       this.gommaService = new GommaService();
@@ -23,6 +24,7 @@ public class GommaView implements View {
     public void showResults(Request request) {
        this.mode  = (String) request.get("mode");
             role = (String) request.get("role");
+            nome = (String) request.get("nome");
 
     }
 
@@ -58,7 +60,9 @@ public class GommaView implements View {
                 String season = getInput();
                 System.out.println("Tipo veicolo:");
                 String typevehicle = getInput();
-                gommaService.insertGomma(new Gomma (null, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle));
+                System.out.println("Numeri pezzi:");
+                Integer quantity = Integer.parseInt(getInput());
+                gommaService.insertGomma(new Gomma (null, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle, quantity));
                 break;
             case "allBrandTypeVehicle":
                 System.out.println("Inserisci il tuo tipo di veicolo(moto-commerciale-auto):");
@@ -84,9 +88,8 @@ public class GommaView implements View {
     public void submit() {
         Request request = new Request();
         request.put("role", role);
+        request.put("nome", nome);
         MainDispatcher.getInstance().callAction("Home", "doControl", request);
     }
-
-
 
 }
