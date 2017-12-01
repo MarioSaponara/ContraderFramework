@@ -30,7 +30,7 @@ public class AccessView implements View{
     public void submit() {
         //Request request = new Request();
 
-        if((typeaccess<0) || (typeaccess>2)){
+        if((typeaccess<1) || (typeaccess>2)){
             MainDispatcher.getInstance().callView("Access",null);
         }else if (typeaccess==1){
             MainDispatcher.getInstance().callView("Login", null);

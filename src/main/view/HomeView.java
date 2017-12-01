@@ -31,6 +31,7 @@ public class HomeView implements View {
                 System.out.println("");
                 System.out.println("1) Inserisci nuova gomma");
                 System.out.println("2) Visualizza tutte le gomme");
+
                 System.out.println("3) Logout");
                 this.choice = Integer.parseInt(getInput());
                 break;

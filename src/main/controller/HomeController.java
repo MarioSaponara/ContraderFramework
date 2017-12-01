@@ -15,7 +15,7 @@ public class HomeController implements Controller {
     }
 
     public void doControl(Request request) {
-        if ((request != null) && ((request.get("role")==null))) {//inserito negazione
+        if ((request != null) && ((request.get("role")==null))) {
             String nomeUtente = request.get("nomeUtente").toString();
             String password = request.get("password").toString();
             //String role=loginService.login(nomeUtente, password);
@@ -28,12 +28,11 @@ public class HomeController implements Controller {
                 MainDispatcher.getInstance().callView("Home", request);
             }
             else
-                MainDispatcher.getInstance().callAction("Login", "doControl", null);//inserito null
+                //MainDispatcher.getInstance().callAction("Login", "doControl", null);//inserito null
+                MainDispatcher.getInstance().callView("Login", request);
 
         }
-        else //MainDispatcher.getInstance().callView("Home", request);
-           // MainDispatcher.getInstance().callAction("Login", "doControl", null);
-            MainDispatcher.getInstance().callView("Login", null);
+        else MainDispatcher.getInstance().callView("Home", request);
 
     }
 }
