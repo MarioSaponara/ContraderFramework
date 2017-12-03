@@ -56,7 +56,6 @@ public class VehicleDAO {
         }
 
         public Integer getVehicle (String brand, String model, String fuel, String version, String capacity) {
-            Vehicle vehicle=null;
             Integer idVehicle_1=null;
             Connection connection = ConnectionSingleton.getInstance();
             try {
@@ -72,12 +71,6 @@ public class VehicleDAO {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     idVehicle_1=resultSet.getInt("idVehicle");
-                    /*String brand_1 = resultSet.getString("brand");
-                    String model_1 = resultSet.getString("model");
-                    String fuel_1= resultSet.getString("fuel");
-                    String version_1 = resultSet.getString("version");
-                    String capacity_1= resultSet.getString("capacity");
-                    vehicle=new Vehicle(idVehicle_1, brand_1, model_1, fuel_1, version_1, capacity_1);*/
             }
         }
         catch (SQLException e) {

@@ -33,20 +33,23 @@ public class VehicleView implements View {
                 List<Vehicle> vehicles = vehicleService.getAllVehicles();
                 System.out.println("----- Veicoli registrati -----");
                 System.out.println();
-                vehicles.forEach(vehicle -> System.out.println(vehicle));
+                if (!vehicles.isEmpty())
+                    vehicles.forEach(vehicle -> System.out.println(vehicle));
+                else
+                    System.out.println("Al momento non sono presenti auto registrate");
                 break;
             case "insert":
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Inserisci veicoli:");
-                System.out.println("brand:");
+                System.out.println("Marca:");
                 String brand = getInput();
-                System.out.println("model:");
+                System.out.println("Modello:");
                 String model = getInput();
-                System.out.println("fuel:");
+                System.out.println("Alimentazione:");
                 String fuel = getInput();
-                System.out.println("version:");
+                System.out.println("Versione:");
                 String version = getInput();
-                System.out.println("capacity:");
+                System.out.println("Cilindrata:");
                 String capacity = getInput();
                 vehicleService.insertVehicle(new Vehicle(null, brand, model, fuel, version, capacity));
         }
