@@ -57,7 +57,7 @@ public class VehicleDAO {
 
         public Integer getVehicle (String brand, String model, String fuel, String version, String capacity) {
             Vehicle vehicle=null;
-            Integer idVehicle_1=0;
+            Integer idVehicle_1=null;
             Connection connection = ConnectionSingleton.getInstance();
             try {
 

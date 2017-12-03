@@ -18,7 +18,7 @@ public class GommaView implements View {
 
     public GommaView () {
       this.gommaService = new GommaService();
-      this.vehicleService = new VehicleService();//Questo si puoooo  fare???????????????????
+      this.vehicleService = new VehicleService();
       this.mode = "all";
     }
 
@@ -101,20 +101,27 @@ public class GommaView implements View {
                 break;
             case "allGommeForVehicle":
                 System.out.println("Inserisci le caratteristiche della tua auto");
-                System.out.println("Modello:");
+                System.out.println("Marca:");
                 String brand_1 = getInput();
                 System.out.println("Modello:");
                 String model_1 = getInput();
-                System.out.println("Modello:");
+                System.out.println("Alimentazione:");
                 String fuel_1 = getInput();
                 System.out.println("Modello:");
                 String version_1 = getInput();
-                System.out.println("Modello:");
+                System.out.println("Cilindrata:");
                 String capacity_1 = getInput();
                 Integer index=vehicleService.getVehicle(brand_1, model_1, fuel_1, version_1, capacity_1);
-                List<Gomma> gommeForVehicle=gommaService.allGommaForVehicle(index);
-                gommeForVehicle.forEach(gomma -> System.out.println(gomma));
-
+                if (!(index== null)) {
+                    List<Gomma> gommeForVehicle = gommaService.allGommaForVehicle(index);
+                    if (!gommeForVehicle.isEmpty())
+                        gommeForVehicle.forEach(gomma -> System.out.println(gomma));
+                    else
+                        System.out.println("Non sono presenti gomme compatibili per questo tipo di macchina");
+                }
+                    else{
+                    System.out.println("ATTENZIONE-L'auto inserita non è presente nel è registrata");
+                }
         }
     }
 
