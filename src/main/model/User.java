@@ -199,17 +199,17 @@ public class User {
         return "USER:" +
                 "\n Username='" + username + '\'' +
                 "\n Password='" + password + '\'' +
-                "\n Firstname='" + firstname + '\'' +
-                "\n Lastname='" + lastname + '\'' +
-                "\n DateofBirth='" + dateofBirth + '\'' +
+                "\n Nome='" + firstname + '\'' +
+                "\n Cognome='" + lastname + '\'' +
+                "\n Data di nascita='" + dateofBirth + '\'' +
                 "\n CF='" + cf + '\'' +
-                "\n Businessname='" + businessname + '\'' +
-                "\n Vat='" + vat + '\'' +
-                "\n Municipality='" + municipality + '\'' +
-                "\n Postecode='" + postecode + '\'' +
-                "\n City='" + city + '\'' +
-                "\n Address='" + address + '\'' +
-                "\n Telephone='" + telephone + '\'' +
-                "\n Role='" + role + '\'';
+                "\n Regione Sociale='" + businessname + '\'' +
+                "\n P.IVA='" + vat + '\'' +
+                "\n Comune='" + municipality + '\'' +
+                "\n CAP='" + postecode + '\'' +
+                "\n Provincia='" + city + '\'' +
+                "\n Indirizzo='" + address + '\'' +
+                "\n Telefono='" + telephone + '\'' +
+                "\n Ruolo='" + role + '\'';
     }
 }

@@ -88,11 +88,11 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle" +
-                "\n brand='" + brand + '\'' +
-                "\n model='" + model + '\'' +
-                "\n fuel='" + fuel + '\'' +
-                "\n version='" + version + '\'' +
-                "\n capacity='" + capacity + '\'';
+        return "Veicolo" +
+                "\n Marca='" + brand + '\'' +
+                "\n Modello='" + model + '\'' +
+                "\n Alimentazione='" + fuel + '\'' +
+                "\n Versione='" + version + '\'' +
+                "\n Cilindrata='" + capacity + '\'';
     }
 }

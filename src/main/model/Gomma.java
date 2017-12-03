@@ -166,17 +166,17 @@ public class Gomma {
     @Override
     public String toString() {
         return "GOMMA" +
-                "\n Model='" + model + '\'' +
-                "\n Manufacturer='" + manufacturer + '\'' +
-                "\n Price=" + price +
-                "\n Width=" + width +
-                "\n Height=" + height +
-                "\n Diameter=" + diameter +
-                "\n Weight=" + weight +
-                "\n Speed='" + speed + '\'' +
-                "\n Season='" + season + '\'' +
-                "\n Typevehicle='" + typevehicle + '\'' +
-                "\n Quantity='" + quantity + '\'' +
+                "\n Modello='" + model + '\'' +
+                "\n Produttore='" + manufacturer + '\'' +
+                "\n Prezzo=" + price +
+                "\n Larghezza=" + width +
+                "\n Altezza=" + height +
+                "\n Diametro=" + diameter +
+                "\n Carico=" + weight +
+                "\n Velocità='" + speed + '\'' +
+                "\n Stagione='" + season + '\'' +
+                "\n Tipo veicolo='" + typevehicle + '\'' +
+                "\n Quantità='" + quantity + '\'' +
                 "\n";
     }
 }
