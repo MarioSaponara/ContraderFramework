@@ -17,7 +17,17 @@ public class AccessView implements View{
         System.out.println("-----HOME-PAGE----");
         System.out.println("1-----ACCEDI------");
         System.out.println("2----REGISTRATI---");
-        typeaccess=Integer.parseInt(getInput());
+        boolean flag;
+        do {
+            flag=false;
+            try{
+            typeaccess = Integer.parseInt(getInput());
+            }
+            catch (NumberFormatException e){
+                 flag=true;
+                MainDispatcher.getInstance().callView("Access",null);
+            }
+        }while(flag);
     }
 
     @Override

@@ -29,6 +29,9 @@ public class GommaService {
         return this.gommaDAO.getAllGommeForManufacturer(brand, type);
     }
 
+    public List<Gomma> allGommaForDimension (String type, double width, double height, double diameter, String season, double weight, String speed) {
+        return this.gommaDAO.allGommaForDimension (type, width, height, diameter, season, weight, speed);
+    }
 }
 
 

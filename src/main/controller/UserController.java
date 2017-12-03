@@ -16,6 +16,5 @@ public class UserController implements Controller{
                         break;
                 }
         MainDispatcher.getInstance().callView("User", request);
-
     }
 }

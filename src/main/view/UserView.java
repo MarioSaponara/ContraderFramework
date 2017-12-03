@@ -2,7 +2,6 @@ package main.view;
 
 import main.MainDispatcher;
 import main.controller.Request;
-import main.model.Gomma;
 import main.model.User;
 import main.service.UserService;
 
@@ -23,8 +22,8 @@ public class UserView implements View {
     @Override
     public void showResults(Request request) {
         this.mode  = (String) request.get("mode");
-        role = (String) request.get("role");
-        nome = (String) request.get("nome");
+        this.role = (String) request.get("role");
+        this.nome = (String) request.get("nome");
     }
 
     @Override

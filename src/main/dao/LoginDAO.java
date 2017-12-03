@@ -24,7 +24,8 @@ public class LoginDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
-                data.add(resultSet.getString("firstname"));
+                String name=resultSet.getString("firstname")+" "+resultSet.getString("lastname");
+                data.add(name.toUpperCase());
                 data.add(resultSet.getString("role"));
                 return  data;
             }

@@ -118,4 +118,67 @@ public class GommaDAO {
         }
 
     }
+
+    public List<Gomma> allGommaForDimension(String type, double width, double height, double diameter, String season, double weight, String speed) {
+        List<Gomma> gomme = new ArrayList<>();
+        Connection connection = ConnectionSingleton.getInstance();
+        try {
+
+            if (type.equals("auto")){
+                String query = "select * from gomme where width = ? and height= ? and diameter= ? and season= ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setDouble(1, width);
+                preparedStatement.setDouble(2, height);
+                preparedStatement.setDouble(3, diameter);
+                preparedStatement.setString(4, season);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    Integer idGommes=resultSet.getInt("idGomme");
+                    String models = resultSet.getString("model");
+                    String manufacturers = resultSet.getString("manufacturer");
+                    double prices = resultSet.getDouble("price");
+                    double widths = resultSet.getDouble("width");
+                    double heights = resultSet.getDouble("height");
+                    double diameters = resultSet.getDouble("diameter");
+                    double weights = resultSet.getDouble("weight");
+                    String speeds = resultSet.getString("speed");
+                    String seasons = resultSet.getString("season");
+                    String typevehicles = resultSet.getString("typevehicle");
+                    Integer quantitys = resultSet.getInt("quantity");
+                    gomme.add(new Gomma(idGommes, models, manufacturers, prices, widths, heights, diameters, weights, speeds, seasons, typevehicles, quantitys));
+                }
+            }else{
+                String query = "select * from gomme where width = ? and height= ? and diameter= ? and season= ? and weight= ? and speed= ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setDouble(1, width);
+                preparedStatement.setDouble(2, height);
+                preparedStatement.setDouble(3, diameter);
+                preparedStatement.setString(4, season);
+                preparedStatement.setDouble(5, weight);
+                preparedStatement.setString(6, speed);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    Integer idGommes=resultSet.getInt("idGomme");
+                    String models = resultSet.getString("model");
+                    String manufacturers = resultSet.getString("manufacturer");
+                    double prices = resultSet.getDouble("price");
+                    double widths = resultSet.getDouble("width");
+                    double heights = resultSet.getDouble("height");
+                    double diameters = resultSet.getDouble("diameter");
+                    double weights = resultSet.getDouble("weight");
+                    String speeds = resultSet.getString("speed");
+                    String seasons = resultSet.getString("season");
+                    String typevehicles = resultSet.getString("typevehicle");
+                    Integer quantitys = resultSet.getInt("quantity");
+                    gomme.add(new Gomma(idGommes, models, manufacturers, prices, widths, heights, diameters, weights, speeds, seasons, typevehicles, quantitys));
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gomme;
+    }
 }

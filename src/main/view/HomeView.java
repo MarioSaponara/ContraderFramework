@@ -2,7 +2,6 @@ package main.view;
 
 import main.MainDispatcher;
 import main.controller.Request;
-import sun.applet.Main;
 
 import java.util.Scanner;
 
@@ -21,7 +20,6 @@ public class HomeView implements View {
     }
 
     public void showOptions() {
-        System.out.println("Benvenuto in ContraderFramework");
         System.out.println("");
         switch(role)
         {
@@ -32,27 +30,43 @@ public class HomeView implements View {
                 System.out.println("1) Inserisci nuova gomma");
                 System.out.println("2) Visualizza tutte le gomme");
                 System.out.println("3) Visualizza tutti gli utenti");
-                System.out.println("4) Logout");
-                this.choice = Integer.parseInt(getInput());
+                System.out.println("4) Inserisci nuovo veicolo");
+                System.out.println("5) Visualizza tutti i veicoli");
+                System.out.println("6) Logout");
                 break;
             case "user":
+                System.out.println(nome+" Benvenuto in ContraderFramework");
                 System.out.println("");
-                System.out.println("-------MENU "+nome+"-------");
+                System.out.println("----------MENU-----------");
                 System.out.println("");
                 System.out.println("1) Visualizza tutte le gomme");
-                System.out.println("2) Visualizza gomma per brand");
-                System.out.println("3) Visualizza gomma per dimensione");
-                System.out.println("4) Logout");
-                this.choice = Integer.parseInt(getInput());
+                System.out.println("2) Visualizza gomme per brand");
+                System.out.println("3) Visualizza gomme per dimensione");
+                System.out.println("4) Visualizza gomme per tipo di auto");
+                System.out.println("5) Logout");
         }
 
+        boolean flag;
+        do {
+            flag=false;
+            try{
+                this.choice = Integer.parseInt(getInput());
+            }
+            catch (NumberFormatException e){
+                flag=true;
+                Request request = new Request();
+                request.put("role", role);
+                request.put("nome", nome);
+                MainDispatcher.getInstance().callAction("Home", "doControl", request);
+            }
+        }while(flag);
     }
 
     public void submit() {
         switch(role)
         {
             case "admin":
-                if (choice < 1 || choice > 4) {
+                if (choice < 1 || choice > 6) {
                     Request request = new Request();
                     request.put("role", role);
                     request.put("nome", nome);
@@ -65,7 +79,14 @@ public class HomeView implements View {
                     request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("User", "doControl", request);
                 }
-                else if (choice == 4)
+                else if ((choice == 4) || (choice == 5)){
+                    Request request = new Request();
+                    request.put("choice", choice);
+                    request.put("role", role);
+                    request.put("nome", nome);
+                    MainDispatcher.getInstance().callAction("Vehicle", "doControl", request);
+                }
+                else if (choice == 6)
                     MainDispatcher.getInstance().callAction("Login", "doControl", null);
                 else{
                     Request request = new Request();
@@ -75,14 +96,15 @@ public class HomeView implements View {
                     MainDispatcher.getInstance().callAction("Gomma", "doControl", request);
                 }
                 break;
+
             case "user":
-                if (choice < 1 || choice > 4) {
+                if (choice < 1 || choice > 5) {
                     Request request = new Request();
                     request.put("role", role);
                     request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Home", "doControl", request);
                 }
-                else if (choice == 4)
+                else if (choice == 5)
                     MainDispatcher.getInstance().callAction("Login", "doControl", null);
                 else {
                     Request request = new Request();
@@ -92,13 +114,11 @@ public class HomeView implements View {
                     MainDispatcher.getInstance().callAction("Gomma", "doControl", request);
                 }
         }
-
     }
 
     public String getInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-
 
 }

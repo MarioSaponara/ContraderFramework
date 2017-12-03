@@ -4,7 +4,6 @@ import main.MainDispatcher;
 
 public class GommaController implements Controller {
 
-
     @Override
     public void doControl(Request request) {
         int choice = (int) request.get("choice");
@@ -26,10 +25,10 @@ public class GommaController implements Controller {
                         request.put("mode", "all");
                         break;
                     case 2:
-                        request.put("mode", "allBrandTypeVehicle");
+                        request.put("mode", "allGommeForBrandAndTypeVehicle");
                         break;
                     case 3:
-                        request.put("mode", "allGomma");
+                        request.put("mode", "allGommeForDimension");
                         break;
             }
         }
