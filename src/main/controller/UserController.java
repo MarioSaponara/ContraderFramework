@@ -9,6 +9,10 @@ public class UserController implements Controller{
         int choice = (int) request.get("choice");
                 switch (choice) {
                     case 1:
+                        request.put("mode", "login");
+                        MainDispatcher.getInstance().callView("Login", request);
+                        break;
+                    case 2:
                         request.put("mode", "insert");
                         break;
                     case 3:

@@ -11,7 +11,7 @@ import java.util.List;
 public class GommaDAO {
 
     private final String QUERY_ALL = "select * from gomme";
-    private final String QUERY_INSERT = "insert into gomme (idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle) values (NULL,?,?,?,?,?,?,?,?,?,?)";
+    private final String QUERY_INSERT = "insert into gomme (idGomme, model, manufacturer, price, width, height, diameter, weight, speed, season, typevehicle, quantity) values (NULL,?,?,?,?,?,?,?,?,?,?,?)";
 
 
     public GommaDAO() {

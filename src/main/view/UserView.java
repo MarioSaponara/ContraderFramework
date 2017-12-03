@@ -15,7 +15,6 @@ public class UserView implements View {
     private String role;
     private String nome;
 
-
     public UserView(){
         this.userService = new UserService();
     }
@@ -23,7 +22,7 @@ public class UserView implements View {
     public void showResults(Request request) {
         this.mode  = (String) request.get("mode");
         this.role = (String) request.get("role");
-        this.nome = (String) request.get("nome");
+        //this.nome = (String) request.get("nome");
     }
 
     @Override
@@ -78,13 +77,12 @@ public class UserView implements View {
     public void submit() {
         //MainDispatcher.getInstance().callAction("Home", "doControl", request);
         if (mode.equals("insert")) {
-            MainDispatcher.getInstance().callView("Login", null);
+            MainDispatcher.getInstance().callView("Access", null);
         }else if (mode.equals("all")) {
             Request request = new Request();
             request.put("role", role);
             request.put("nome", nome);
             MainDispatcher.getInstance().callAction("Home", "doControl", request);
         }
-
     }
 }

@@ -24,7 +24,7 @@ public class AccessView implements View{
             typeaccess = Integer.parseInt(getInput());
             }
             catch (NumberFormatException e){
-                 flag=true;
+                flag=true;
                 MainDispatcher.getInstance().callView("Access",null);
             }
         }while(flag);
@@ -38,14 +38,17 @@ public class AccessView implements View{
 
     @Override
     public void submit() {
-        //Request request = new Request();
-
+        Request request = new Request();
         if((typeaccess<1) || (typeaccess>2)){
             MainDispatcher.getInstance().callView("Access",null);
         }else if (typeaccess==1){
-            MainDispatcher.getInstance().callView("Login", null);
+            request.put("choice",typeaccess);
+            request.put("role",null);
+            MainDispatcher.getInstance().callAction("User", "doControl", request);
         }else if (typeaccess==2) {
-            MainDispatcher.getInstance().callView("User", null);
+            request.put("choice",typeaccess);
+            request.put("role",null);
+            MainDispatcher.getInstance().callAction("User", "doControl", request);
         }
     }
 }
