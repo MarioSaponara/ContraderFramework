@@ -181,4 +181,36 @@ public class GommaDAO {
         }
         return gomme;
     }
+
+    public List<Gomma> allGommaForVehicle(Integer index) {
+        List<Gomma> gomme = new ArrayList<>();
+        Connection connection = ConnectionSingleton.getInstance();
+        try {
+
+                String query = "select * from contrader.gomme inner join contrader.compatibility on compatibility.idGomme=gomme.idGomme and compatibility.idvehicle=?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, index);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    Integer idGommes=resultSet.getInt("idGomme");
+                    String models = resultSet.getString("model");
+                    String manufacturers = resultSet.getString("manufacturer");
+                    double prices = resultSet.getDouble("price");
+                    double widths = resultSet.getDouble("width");
+                    double heights = resultSet.getDouble("height");
+                    double diameters = resultSet.getDouble("diameter");
+                    double weights = resultSet.getDouble("weight");
+                    String speeds = resultSet.getString("speed");
+                    String seasons = resultSet.getString("season");
+                    String typevehicles = resultSet.getString("typevehicle");
+                    Integer quantitys = resultSet.getInt("quantity");
+                    gomme.add(new Gomma(idGommes, models, manufacturers, prices, widths, heights, diameters, weights, speeds, seasons, typevehicles, quantitys));
+                }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gomme;
+    }
 }

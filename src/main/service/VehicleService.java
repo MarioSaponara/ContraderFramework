@@ -20,4 +20,8 @@ public class VehicleService {
         public boolean insertVehicle (Vehicle vehicle) {
             return this.vehicleDAO.insertVehicle(vehicle);
         }
+
+        public Integer getVehicle (String brand, String model, String fuel, String version, String capacity) {
+            return this.vehicleDAO.getVehicle(brand, model, fuel, version, capacity);
+        }
     }

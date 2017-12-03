@@ -30,6 +30,9 @@ public class GommaController implements Controller {
                     case 3:
                         request.put("mode", "allGommeForDimension");
                         break;
+                    case 4:
+                        request.put("mode", "allGommeForVehicle");
+                        break;
             }
         }
         MainDispatcher.getInstance().callView("Gomma", request);

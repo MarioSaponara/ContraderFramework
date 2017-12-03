@@ -32,7 +32,9 @@ public class HomeView implements View {
                 System.out.println("3) Visualizza tutti gli utenti");
                 System.out.println("4) Inserisci nuovo veicolo");
                 System.out.println("5) Visualizza tutti i veicoli");
-                System.out.println("6) Logout");
+                System.out.println("6) Inserisci compatibilità");
+                System.out.println("7) Visualizza compatibilità presenti");
+                System.out.println("8) Logout");
                 break;
             case "user":
                 System.out.println(nome+" Benvenuto in ContraderFramework");
@@ -66,7 +68,7 @@ public class HomeView implements View {
         switch(role)
         {
             case "admin":
-                if (choice < 1 || choice > 6) {
+                if (choice < 1 || choice > 8) {
                     Request request = new Request();
                     request.put("role", role);
                     request.put("nome", nome);
@@ -86,7 +88,7 @@ public class HomeView implements View {
                     request.put("nome", nome);
                     MainDispatcher.getInstance().callAction("Vehicle", "doControl", request);
                 }
-                else if (choice == 6)
+                else if (choice == 8)
                     MainDispatcher.getInstance().callAction("Login", "doControl", null);
                 else{
                     Request request = new Request();

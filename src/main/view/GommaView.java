@@ -3,6 +3,7 @@ import main.MainDispatcher;
 import main.controller.Request;
 import main.model.Gomma;
 import main.service.GommaService;
+import main.service.VehicleService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,12 +11,14 @@ import java.util.Scanner;
 public class GommaView implements View {
 
     private GommaService gommaService;
+    private VehicleService vehicleService;
     private String mode;
     private String role;
     private String nome;
 
     public GommaView () {
       this.gommaService = new GommaService();
+      this.vehicleService = new VehicleService();//Questo si puoooo  fare???????????????????
       this.mode = "all";
     }
 
@@ -95,6 +98,23 @@ public class GommaView implements View {
                 }
                 List<Gomma> gommeForDimension=gommaService.allGommaForDimension(type2, width2, height2, diameter2, season2, weight2, speed2);
                 gommeForDimension.forEach(gomma -> System.out.println(gomma));
+                break;
+            case "allGommeForVehicle":
+                System.out.println("Inserisci le caratteristiche della tua auto");
+                System.out.println("Modello:");
+                String brand_1 = getInput();
+                System.out.println("Modello:");
+                String model_1 = getInput();
+                System.out.println("Modello:");
+                String fuel_1 = getInput();
+                System.out.println("Modello:");
+                String version_1 = getInput();
+                System.out.println("Modello:");
+                String capacity_1 = getInput();
+                Integer index=vehicleService.getVehicle(brand_1, model_1, fuel_1, version_1, capacity_1);
+                List<Gomma> gommeForVehicle=gommaService.allGommaForVehicle(index);
+                gommeForVehicle.forEach(gomma -> System.out.println(gomma));
+
         }
     }
 

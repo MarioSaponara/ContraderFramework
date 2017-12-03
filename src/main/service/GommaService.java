@@ -32,6 +32,10 @@ public class GommaService {
     public List<Gomma> allGommaForDimension (String type, double width, double height, double diameter, String season, double weight, String speed) {
         return this.gommaDAO.allGommaForDimension (type, width, height, diameter, season, weight, speed);
     }
+
+    public List<Gomma> allGommaForVehicle(Integer index) {
+        return this.gommaDAO.allGommaForVehicle (index);
+    }
 }
 
 
